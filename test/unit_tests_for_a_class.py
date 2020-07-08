@@ -15,11 +15,11 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(self.student.major, 'CIS')
 
     def test_object_created_all_attributes(self):
-        student = s.Student('Constantine', 'John', 'DEMON HUNTING', '4,0')
+        student = s.Student('Constantine', 'John', 'DEMONHUNTING', '4.0')
         assert student.last_name == 'Constantine'
         assert student.first_name == 'John'
-        assert student.major == 'DEMON HUNTING'
-        assert student.gpa == '4,0'
+        assert student.major == 'DEMONHUNTING'
+        assert student.gpa == '4.0'
 
     def test_student_str(self):
         self.assertEqual(str(self.student), 'Klein, Kelly has major CIS with gpa: 3.7')
@@ -32,8 +32,9 @@ class MyTestCase(unittest.TestCase):
         with self.assertRaises(ValueError):
             p = s.Student('Klein', '123', 'CIS')
 
-    #def test_object_not_created_error_major(self):
-        #pass
+    def test_object_not_created_error_major(self):
+        with self.assertRaises(ValueError):
+            p = s.Student('Klein', 'Kelly', '123')
 
     #def test_object_not_created_error_gpa(self):
         #pass
