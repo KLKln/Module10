@@ -1,8 +1,8 @@
 class Student:
     """Student class"""
     def __init__(self, lname, fname, major, gpa=0.0):
-        name_characters = set("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'")
-        major_characters = set("ABCDEFGHIJKLMNOPQRSTUVWXYZ'")
+        name_characters = set("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'-")
+        major_characters = set("ABCDEFGHIJKLMNOPQRSTUVWXYZ'-")
         if not (name_characters.issuperset(lname) and name_characters.issuperset(fname)):
             raise ValueError
         if major and not major_characters.issuperset(major):
