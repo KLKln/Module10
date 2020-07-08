@@ -7,10 +7,14 @@ class Student:
             raise ValueError
         if major and not major_characters.issuperset(major):
             raise ValueError
+        if not isinstance(gpa, float):
+            raise ValueError
         self.last_name = lname
         self.first_name = fname
         self.major = major
         self.gpa = gpa
+
+
 
     def __str__(self):
         return self.last_name + ", " + self.first_name + " has major " + self.major + " with gpa: " + str(self.gpa)
