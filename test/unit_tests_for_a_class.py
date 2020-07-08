@@ -22,22 +22,20 @@ class MyTestCase(unittest.TestCase):
         assert student.gpa == '4,0'
 
     def test_student_str(self):
-        #return self.last_name + ", " + self.first_name + " has major " + self.major + "with gpa: " + str(self.gpa)
-
         self.assertEqual(str(self.student), 'Klein, Kelly has major CIS with gpa: 3.7')
-        pass
 
-    def test_object_not_created_error_last_name(self):
-        pass
 
-    def test_object_not_created_error_first_name(self):
-        pass
+    #def test_object_not_created_error_last_name(self):
+        #pass
 
-    def test_object_not_created_error_major(self):
-        pass
+    #def test_object_not_created_error_first_name(self):
+        #pass
 
-    def test_object_not_created_error_gpa(self):
-        pass
+    #def test_object_not_created_error_major(self):
+        #pass
+
+    #def test_object_not_created_error_gpa(self):
+        #pass
 
 if __name__ == '__main__':
     unittest.main()
