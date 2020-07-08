@@ -1,8 +1,9 @@
 """
 Program: invoice.py
 Author: Kelly Klein
-Last date modified: 7/5/2020
-This program will
+Last date modified: 7/8/2020
+This program will take input from main and output a series of strings in the
+    form of an invoice
 """
 
 
