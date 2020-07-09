@@ -1,14 +1,43 @@
 """
-Program: invoice.py
+Program: customer_in_invoice.py
 Author: Kelly Klein
 Last date modified: 7/8/2020
 This program will take input from main and output a series of strings in the
-    form of an invoice
+    form of an invoice, will take a customer class instead of rewriting already
+    used code.
 """
 
 
+class Customer:
+    def __init__(self, cid, lname, fname, phone, address):
+        
+        self.customer_id = cid
+        # customer_id: int: required
+        self.last_name = lname
+        # last_name: string: required
+        self.first_name = fname
+        # first_name: string: required
+        self.phone = phone
+        # phone_number: string: required
+        self.address = address
+        # address: string: required
+
+    def display(self):
+
+        print('Customer #', self.customer_id, self.last_name, ',', self.first_name)
+        print(self.phone)
+        print(self.address)
+
+    def __str__(self):
+        return self.customer_id, self.last_name, self.first_name, self.phone, self.address
+
+    def __repr__(self):
+        return self.customer_id, self.last_name, self.first_name, self.phone, self.address
+
+
+
 class Invoice:
-    def __init__(self, invoice_id, customer_id, address, lname, fname,  phone, items_with_price={}):
+    def __init__(self, invoice_id, Customer, items_with_price={}):
         """
 use reST style.
     :param invoice_id: unique int assigned to identify an invoice
@@ -20,18 +49,10 @@ use reST style.
     :return:
 """
 
+
         self.invoice_id = invoice_id
         # invoice_id: int: required
-        self.cid = customer_id
-        # customer_id: int: required
-        self.last_name = lname
-        # last_name: string: required
-        self.first_name = fname
-        # first_name: string: required
-        self.address = address
-        # address: string: required
-        self.phone = phone
-        # phone_number: string: required
+        self.customer = Customer
         self.items_with_price = items_with_price
         # items_with_price: dictionary, optional
         # since optional, how do we default to a 'blank' dictionary
@@ -43,12 +64,7 @@ use reST style.
         :return:
 
 """
-        print('invoice number: ', self.invoice_id)
-        print('customer id: ', self.cid)
-        print(self.last_name, self.first_name)
-        print('address: ', self.address)
-        print('phone number: ', self.phone)
-
+        Customer.display(invoice.customer)
         subtotal = 0
         # items_with_price = {}
         # loop over each k, v pair in items_with_price
@@ -77,17 +93,30 @@ use reST style.
         for key, value in item_price_dict.items():
             self.items_with_price[key] = value
 
-    #invoice_id, customer_id, lname, fname,  phone, address
+    # invoice_id, customer_id, lname, fname,  phone, address
     def __str__(self):
-        return self.invoice_id, self.cid, self.last_name, self.first_name, self.phone, self.address
+        return self.invoice_id, self.customer
 
     def __repr__(self):
-        return self.invoice_id, self.cid, self.last_name, self.first_name, self.phone, self.address
+        return self.invoice_id, self.customer
 
 
 if __name__ == '__main__':
-    # Driver code
-    invoice = Invoice(1, 123, '1313 Disneyland Dr, Anaheim, CA 92802', 'Mouse', 'Minnie', '555-867-5309')
+    # Driver
+    captain_mal = Customer(1, 'Reynolds', 'Mal', 'No phones', 'Firefly, somewhere in the verse')
+    invoice = Invoice(1, captain_mal)
     invoice.add_item({'iPad': 799.99})
     invoice.add_item({'Surface': 999.99})
-    invoice.create_invoice()
+    invoice.create_invoice(), '\n'
+
+    wash = Customer(2, 'Washburn', 'Hoban', "I'm a leaf in the wind", 'watch how I soar')
+    invoice = Invoice(2, wash)
+    invoice.add_item({'iPad': 799.99})
+    invoice.add_item({'Surface': 999.99})
+    invoice.create_invoice(), '\n'
+
+    kaylee = Customer(3, 'Frye', 'Kaylee', 'Screw this,', "I'm gonna live")
+    invoice = Invoice(3, kaylee)
+    invoice.add_item({'iPad': 799.99})
+    invoice.add_item({'Surface': 999.99})
+    invoice.create_invoice(), '\n'

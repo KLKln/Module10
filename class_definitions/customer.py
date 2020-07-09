@@ -20,11 +20,15 @@ use reST style.
     :return:
 """
         #this error is raised in the constructor
+        """
         try:
             if isinstance(customer_id, int):
                 self.cid = customer_id
         except AttributeError:
             AttributeError("'Customer' attribute has no attribute 'cid'")
+"""
+
+        self.cid = customer_id
         # customer_id: int: required
         self.last_name = lname
         # last_name: string: required
@@ -51,10 +55,10 @@ use reST style.
         print(self.phone)
 
     def __str__(self):
-        print(str(self.cid, self.first_name + self.last_name, self.address, self.phone, ))
+        return self.cid, self.first_name + self.last_name, self.address, self.phone
 
     def __repr__(self):
-        print(repr(self.cid, self.first_name + self.last_name, self.address, self.phone))
+        return self.cid, self.first_name + self.last_name, self.address, self.phone
 
 
 if __name__ == '__main__':
